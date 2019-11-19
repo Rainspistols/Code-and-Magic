@@ -230,6 +230,23 @@
       </div>
     </template>
 
+    <script type="text/javascript">
+      var fireballSize = 40;
+      var getFireballSpeed = function(left) {
+        return left === true ? 5 : 2;
+      };
+      wizardSpeed = 3;
+      wizardWidth = 70;
+      getWizardHeight = function() {
+        return wizardWidth * 1.337;
+      };
+      function getWizardX(width) {
+        return width/2;
+      }
+      function getWizardY(height) {
+        return height/3*2;
+      }
+    </script>
     <script src="./main.bundle.js"></script>
   </body>
 </html>
