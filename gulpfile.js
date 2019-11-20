@@ -25,7 +25,7 @@ const CONFIG = {
   docs: {
     base: "./docs/",
     images: "./docs/img/",
-    favicon: './docs/'
+    favicon: "./docs/"
   }
 };
 
