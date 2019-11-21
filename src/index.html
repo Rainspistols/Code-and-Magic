@@ -230,6 +230,8 @@
       </div>
     </template>
 
+    <canvas id="canvas">Youtr browser doesn't use canvas</canvas>
+
     <script type="text/javascript">
       var fireballSize = 40;
       var getFireballSpeed = function(left) {
@@ -241,10 +243,10 @@
         return wizardWidth * 1.337;
       };
       function getWizardX(width) {
-        return width/2;
+        return width / 2;
       }
       function getWizardY(height) {
-        return height/3*2;
+        return (height / 3) * 2;
       }
     </script>
     <script src="./main.bundle.js"></script>
