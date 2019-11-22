@@ -1,14 +1,16 @@
 'use strict';
 
-var CLOUD_WIDTH = 500;
-var CLOUD_HEIGHT = 200;
+var CLOUD_WIDTH = 420;
+var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
-var CLOUD_Y = 50;
-var GAP = 10;
-var FONT_GAP = 15;
-var TEXT_WIDTH = 60;
-var BAR_HEIGHT = 20;
-var barWidth = CLOUD_WIDTH - GAP - TEXT_WIDTH - GAP;
+var CLOUD_Y = 10;
+var BAR_WIDTH = 40;
+var FONT_WIDTH = 40;
+var FONT_GAP_Y = 250;
+var GAP_X = 50;
+var GAP_Y = 70;
+var barHeight = -150;
+var GAP_BAR_BOT = 10;
 
 var renderCloud = function(ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -22,28 +24,44 @@ var getMaxElement = function(arr) {
       maxElement = arr[i];
     }
   }
-    return maxElement;
-  }
+  return maxElement;
+};
 
 window.renderStatistics = function(ctx, players, times) {
-  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0,0,0,0.3)');
+  renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
   ctx.fillStyle = '#000';
 
+  ctx.font = '16px PT Mono';
+  ctx.textBaseline = 'hanging';
+  ctx.fillText('Hooray you won!', CLOUD_X + GAP_X, CLOUD_Y + 20);
+  ctx.fillText('List of results:', CLOUD_X + GAP_X, CLOUD_Y + 40);
+
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
+    ctx.fillStyle = 'black';
     ctx.fillText(
       players[i],
-      CLOUD_X + GAP,
-      CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i
+      CLOUD_X + GAP_X + (GAP_X + BAR_WIDTH) * i,
+      CLOUD_Y + FONT_GAP_Y
     );
+    ctx.fillText(
+      times[i].toFixed(),
+      CLOUD_X + GAP_X + (GAP_X + BAR_WIDTH) * i,
+      CLOUD_Y + FONT_GAP_Y - GAP_BAR_BOT * 3 + (times[i] * barHeight) / maxTime
+    );
+    if (players[i] === 'You') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)'
+    } else {
+      ctx.fillStyle = 'hsl(250,' + Math.random().toFixed(3)*100 + '%,50%)'
+    }
     ctx.fillRect(
-      CLOUD_X + GAP + TEXT_WIDTH,
-      CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i,
-      (barWidth * times[i]) / maxTime,
-      BAR_HEIGHT
+      CLOUD_X + GAP_X + (GAP_X + FONT_WIDTH) * i,
+      CLOUD_Y + FONT_GAP_Y - GAP_BAR_BOT,
+      BAR_WIDTH,
+      (times[i] * barHeight) / maxTime
     );
   }
 };
