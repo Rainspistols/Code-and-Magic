@@ -408,7 +408,8 @@ footer a span{
 }
 
 footer p {
-  margin-bottom: 0;
+  margin: 0;
+  margin-top: 37px;
   padding-bottom: 20px;
 }
 
@@ -604,10 +605,14 @@ input[type="radio"]:checked + .review-mark-label {
 
 .setup-title {
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .setup-user {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .setup-open-icon,
@@ -658,8 +663,7 @@ input[type="radio"]:checked + .review-mark-label {
   font-size: 70px;
   color: #000;
   cursor: pointer;
-
-  transform: translateY(-0.3em);
+  line-height: 0;
 }
 
 .setup-artifacts-shop {
@@ -667,24 +671,22 @@ input[type="radio"]:checked + .review-mark-label {
   flex-wrap: wrap;
   justify-content: flex-end;
 
-  padding-top: 20px;
   padding-bottom: 20px;
+  padding-right: 100px;
 
-  width: 716px;
   height: 65px;
 }
 
 .setup-player {
-  padding-top: 20px;
   position: relative;
 
-  height: 300px;
-  min-height: 300px;
+  height: 200px;
+  min-height: 200px;
 }
 
 .setup-wizard {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 
   position: absolute;
   bottom: 0;
@@ -696,40 +698,43 @@ input[type="radio"]:checked + .review-mark-label {
   left: 300px;
   top: 0;
 
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 
   background: #ee4830;
 }
 
 .setup-fireball {
   background: url("../img/fireball-mask.png");
-  background-size: 75px 75px;
-  width: 75px;
-  height: 75px;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .setup-artifacts {
   position: absolute;
   bottom: 0;
-  right: 46px;
+  right: 50px;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
-  width: 260px;
-  height: 260px;
+  width: 200px;
+  height: 200px;
 }
 
 .setup-artifacts-cell {
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
 
   background: rgba(0, 0, 0, 0.1);
   border: solid 1px rgba(255, 255, 255, 0.5);
 
   box-sizing: border-box;
+  display: flex;
+  justify-content: cetner;
+  align-items: center;
 }
 
 .setup-artifacts-cell:last-child {
@@ -741,18 +746,20 @@ input[type="radio"]:checked + .review-mark-label {
   padding-bottom: 20px;
 
   background-color: #da641a;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
 }
 
 .setup-similar-title {
   color: #fff;
 
-  margin-left: 20px;
+  margin: 10px;
 }
 
 .setup-similar-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 
   margin-left: 20px;
   margin-right: 20px;
@@ -764,19 +771,28 @@ input[type="radio"]:checked + .review-mark-label {
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-right: 50px;
+}
+.setup-similar-item:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.setup-similar-content:nth-last-child() { 
+  margin: 0;
 }
 
 .setup-similar-label {
   margin: 5px;
 
   color: #fff;
+  font-size: 14px;
 }
 
 .setup-similar-content {
   position: relative;
 
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 
   background-color: #414342;
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.25);
@@ -790,7 +806,7 @@ input[type="radio"]:checked + .review-mark-label {
 
   margin: 0 auto;
 
-  width: 100px;
+  width: 80px;
 }
 
 .setup-submit {
@@ -863,6 +879,7 @@ input[type="radio"]:checked + .review-mark-label {
   min-width: 40px;
   max-width: 40px;
   height: 40px;
+  margin-right: 20px;
 }
 
 .upload .setup-user-pic {
