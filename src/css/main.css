@@ -5,11 +5,13 @@ body {
 
   min-width: 1024px;
   margin: 0 auto;
+  height: 100vh;
+  overflow-y: hidden;
 
   font: 20px "PT Mono";
   color: #ffffff;
 
-  background: #da641a;
+  background: url('./img/brick.jpg') top left repeat;
 }
 
 h1,
@@ -397,7 +399,12 @@ footer {
 }
 
 footer a {
-  color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer a span{
+  text-decoration: underline;
 }
 
 footer p {
@@ -551,7 +558,6 @@ input[type="radio"]:checked + .review-mark-label {
   display: block;
   width: 250px;
   margin: 0 auto;
-  padding-top: 50px;
 }
 
 .footer-link:hover {

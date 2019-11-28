@@ -1,7 +1,7 @@
 'use strict';
 
 var setup = document.querySelector('.setup');
-setup.classList.remove('hidden');
+// setup.classList.remove('hidden');
 document.querySelector('.setup-similar').classList.remove('hidden');
 var wizards = [];
 var WIZARD_SURNAMES = [
