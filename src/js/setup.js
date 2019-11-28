@@ -32,16 +32,18 @@ var WIZARD_COAT_COLOR = [
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)',
 ];
-function randomIndex(itemNum) {
+var WIZARD_EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+
+function getRandomIndex(itemNum) {
   return Math.floor(Math.random() * itemNum);
 }
-var WIZARD_EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
-function getFullName() {
+
+var buildWizards = function() {
   for (let i = 0; i < 4; i++) {
-    var randomIndexNames = randomIndex(WIZARD_NAMES.length),
-      randomIndexSurnames = randomIndex(WIZARD_SURNAMES.length),
-      randomIndexCoat = randomIndex(WIZARD_COAT_COLOR.length),
-      randomIndexEyes = randomIndex(WIZARD_EYES_COLOR.length);
+    var randomIndexNames = getRandomIndex(WIZARD_NAMES.length),
+      randomIndexSurnames = getRandomIndex(WIZARD_SURNAMES.length),
+      randomIndexCoat = getRandomIndex(WIZARD_COAT_COLOR.length),
+      randomIndexEyes = getRandomIndex(WIZARD_EYES_COLOR.length);
     let obj = {};
     obj['name'] =
       WIZARD_SURNAMES[randomIndexSurnames] + ' ' + WIZARD_NAMES[randomIndexNames];
@@ -50,22 +52,21 @@ function getFullName() {
     wizards.push(obj);
   }
 }
+buildWizards();
 
-getFullName();
-
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTeamplate = document
+var charactersList = document.querySelector('.setup-similar-list');
+var charactersListTemplate = document
   .querySelector('#similar-wizard-template')
   .content.querySelector('.setup-similar-item');
 var wizardEyes = document.querySelector('#wizard-eyes');
 
 for (var i = 0; i < 4; i++) {
-  var wizardElement = similarWizardTeamplate.cloneNode(true);
+  var wizardUnit = charactersListTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent =
+  wizardUnit.querySelector('.setup-similar-label').textContent =
     wizards[i].name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+    wizardUnit.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+    wizardUnit.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
 
-  similarListElement.appendChild(wizardElement);
+  charactersList.appendChild(wizardUnit);
 }
