@@ -83,15 +83,16 @@
 
       <div class="demo"></div>
 
-      <div class="setup-open">
+      <button class="setup-open">
         <img src="./img/user-1.jpg" class="setup-open-icon" />
-      </div>
+      </button>
     </header>
 
     <div class="overlay setup hidden">
       <form
+        action="https://js.dump.academy/code-and-magick"
         class="setup-wizard-form"
-        method="post"
+        method="POST"
         enctype="multipart/form-data"
         autocomplete="off"
       >
@@ -109,11 +110,13 @@
                 required
                 class="setup-user-name"
                 value="Blue pendalf"
+                minlength="2"
+                maxlength="25"
               />
             </label>
           </div>
 
-          <span class="setup-close">&times;</span>
+          <button type="button" class="setup-close">&times;</button>
         </div>
 
         <div class="setup-artifacts-shop">
@@ -197,7 +200,7 @@
             </div>
           </div>
 
-          <button class="button setup-submit">Save</button>
+          <button class="button setup-submit" type="submit">Save</button>
         </div>
       </form>
     </div>
