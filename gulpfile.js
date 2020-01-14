@@ -1,6 +1,6 @@
 const { watch, src, dest, series, parallel } = require("gulp");
 const browserSync = require("browser-sync").create();
-const uglify = require("gulp-uglify");
+// const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const del = require("del");
 const postcss = require("gulp-postcss");
@@ -25,7 +25,8 @@ const CONFIG = {
   docs: {
     base: "./docs/",
     images: "./docs/img/",
-    favicon: "./docs/"
+    favicon: "./docs/",
+    js: "./docs/js"
   }
 };
 
@@ -37,32 +38,38 @@ function cssTask(done) {
 
   done();
 }
+// commented becouse i need to see all files js(modules)
+// function jsTask(done) {
+//   src(CONFIG.src.js)
+//     .pipe(
+//       webpackStream({
+//         output: {
+//           filename: "main.js"
+//         },
+//         module: {
+//           rules: [
+//             {
+//               test: /\.(js)$/,
+//               exclude: /(node_modules)/,
+//               loader: "babel-loader",
+//               query: {
+//                 presets: ["@babel/preset-env"]
+//               }
+//             }
+//           ]
+//         }
+//       })
+//     )
+//     .pipe(rename({ suffix: ".bundle" }))
+//     .pipe(uglify())
+//     .pipe(dest(CONFIG.docs.base));
 
-function jsTask(done) {
+//   done();
+// }
+
+function jsTaskAllFilesSeparated(done) {
   src(CONFIG.src.js)
-    .pipe(
-      webpackStream({
-        output: {
-          filename: "main.js"
-        },
-        module: {
-          rules: [
-            {
-              test: /\.(js)$/,
-              exclude: /(node_modules)/,
-              loader: "babel-loader",
-              query: {
-                presets: ["@babel/preset-env"]
-              }
-            }
-          ]
-        }
-      })
-    )
-    .pipe(rename({ suffix: ".bundle" }))
-    .pipe(uglify())
-    .pipe(dest(CONFIG.docs.base));
-
+  .pipe(dest(CONFIG.docs.js));
   done();
 }
 
@@ -120,14 +127,16 @@ function favicon(done) {
 function watchChanges() {
   watch(CONFIG.src.css, series(cssTask, reload));
   watch(CONFIG.src.html, series(templateTask, reload));
-  watch(CONFIG.src.js, series(jsTask, reload));
+  // watch(CONFIG.src.js, series(jsTask, reload));
+  watch(CONFIG.src.js, series(jsTaskAllFilesSeparated, reload));
   watch(CONFIG.src.images, series(imagesTask, reload));
   watch(CONFIG.src.favicon, series(favicon, reload));
 }
 
 exports.clean = cleanUp;
 exports.dev = parallel(
-  jsTask,
+  // jsTask,
+  jsTaskAllFilesSeparated,
   cssTask,
   templateTask,
   imagesTask,
@@ -138,5 +147,8 @@ exports.dev = parallel(
 );
 exports.build = series(
   cleanUp,
-  parallel(jsTask, cssTask, imagesTask, imagesTaskWebp, templateTask, favicon)
+  parallel(
+    // jsTask,
+    jsTaskAllFilesSeparated,
+     cssTask, imagesTask, imagesTaskWebp, templateTask, favicon)
 );
