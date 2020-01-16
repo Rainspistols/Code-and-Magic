@@ -477,7 +477,7 @@ window.Game = (function() {
           message = 'The game is on pause!\nPress Space to continue.';
           break;
         case Verdict.INTRO:
-          message = 'Welcome! Press Spacebar to \n start the game.';
+          message = '  Welcome! Press Spacebar to \n        start the game.';
           break;
       }
 
