@@ -97,6 +97,7 @@
         autocomplete="off"
       >
         <div class="setup-title">
+          <div class="setup-dragg-elem"></div>
           <div class="setup-user">
             <div class="upload">
               <img class="setup-user-pic" src="./img/user-1.jpg" />
@@ -235,25 +236,12 @@
 
     <canvas id="canvas">Youtr browser doesn't use canvas</canvas>
 
-    <script type="text/javascript">
-      var fireballSize = 40;
-      var getFireballSpeed = function(left) {
-        return left === true ? 5 : 2;
-      };
-      wizardSpeed = 3;
-      wizardWidth = 70;
-      getWizardHeight = function() {
-        return wizardWidth * 1.337;
-      };
-      function getWizardX(width) {
-        return width / 2;
-      }
-      function getWizardY(height) {
-        return (height / 3) * 2;
-      }
-    </script>
-    <script src="./js/setup.js"></script>
+    <script src="./js/globalScope.js"></script>
+    <script src="./js/characterMenu.js"></script>
+    <script src="./js/characterMenu.js"></script>
     <script src="./js/renderStatistics.js"></script>
+    <script src="./js/buildWizards.js"></script>
+    <script src="./js/changeWizardsColors.js"></script>
     <script src="./js/game.js"></script>
   </body>
 </html>

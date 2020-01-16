@@ -155,6 +155,7 @@ header {
 
   font-size: 20px;
   line-height: 1.5;
+  user-select: none;  
 }
 
 .demo {
@@ -610,10 +611,24 @@ input[type='radio']:checked + .review-mark-label {
 }
 
 .setup-title {
-  padding: 20px;
+  padding: 30px 20px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.setup-dragg-elem {
+  width: 75%;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  background-color: #1CB34D;
+  transform: translateX(-50%);
+  border-radius: 0 0 5px 5px;
+  cursor: grab;
+  box-shadow: 0 0 1px 1px black;
+  box-shadow: 0px 2px 1px 2px rgba(0,0,0,0.4);
 }
 
 .setup-user {
@@ -819,6 +834,7 @@ input[type='radio']:checked + .review-mark-label {
 
   background: #1cb34d;
   color: #fff;
+  cursor: pointer;
 }
 
 .setup-submit:disabled {
