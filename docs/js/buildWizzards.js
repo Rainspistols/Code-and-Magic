@@ -31,6 +31,6 @@
 
   for (let i = 0; i < 4; i++) {
     let wizard = new Wizard(WizardData, i);
-    window.wizards.push(wizard);
+    window.globalScope.wizards.push(wizard);
   }
 })();

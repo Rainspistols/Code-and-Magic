@@ -11,6 +11,7 @@
   var characterMenuX = '50%',
     characterMenuY = '80px';
 
+
   function toggleHideCharMenu() {
     characterMenu.classList.toggle('hidden');
     if (!characterMenu.classList.contains('hidden')) {
@@ -18,12 +19,14 @@
       characterMenu.style.left = characterMenuX;
     }
   }
+
   function isEsc(e) {
     return e.keyCode === ESC_KEYCODE;
   }
   function isEnter(e) {
     return e.keyCode === ENTER_KEYCODE;
   }
+
   function onEscCharMenu(e) {
     if (isEsc(e)) {
       if (!characterMenu.classList.contains('hidden')) {
@@ -31,6 +34,7 @@
       }
     }
   }
+
   function onUserName(e) {
     e.stopPropagation();
     if (isEsc(e) || (isEnter(e) && characterMenuUserName.validity.valid)) {

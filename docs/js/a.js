@@ -1,4 +1,3 @@
-
 document.querySelector('.setup-similar').classList.remove('hidden');
 var wizards = [];
 var WIZARD_SURNAMES = [
@@ -41,10 +40,18 @@ var WIZARD_FIREBALL_COLOR = [
 // build wizzards
 var buildWizards = function() {
   for (let i = 0; i < 4; i++) {
-    var randomIndexNames = getRandomIndex(WIZARD_NAMES.length),
-      randomIndexSurnames = getRandomIndex(WIZARD_SURNAMES.length),
-      randomIndexCoat = getRandomIndex(WIZARD_COAT_COLOR.length),
-      randomIndexEyes = getRandomIndex(WIZARD_EYES_COLOR.length);
+    var randomIndexNames = window.globalScope.getRandomIndex(
+        WIZARD_NAMES.length
+      ),
+      randomIndexSurnames = window.globalScope.getRandomIndex(
+        WIZARD_SURNAMES.length
+      ),
+      randomIndexCoat = window.globalScope.getRandomIndex(
+        WIZARD_COAT_COLOR.length
+      ),
+      randomIndexEyes = window.globalScope.getRandomIndex(
+        WIZARD_EYES_COLOR.length
+      );
     let obj = {};
     obj['name'] =
       WIZARD_SURNAMES[randomIndexSurnames] +
