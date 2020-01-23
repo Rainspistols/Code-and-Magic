@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+function buildSimilarWizards() {
   window.wizards = [];
   window.buildWizards = function() {
     var charactersList = document.querySelector('.setup-similar-list');
@@ -25,13 +25,13 @@
       var wizardUnit = charactersListTemplate.cloneNode(true);
 
       wizardUnit.querySelector('.setup-similar-label').textContent =
-        window.wizards[i].name;
+        window.wizardsData[i].name;
       wizardUnit.querySelector('.wizard-coat').style.fill =
-        window.wizards[i].coatColor;
+        window.wizardsData[i].coatColor;
       wizardUnit.querySelector('.wizard-eyes').style.fill =
-        window.wizards[i].eyesColor;
+        window.wizardsData[i].eyesColor;
 
       charactersList.appendChild(wizardUnit);
     }
   };
-})();
+};
