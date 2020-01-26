@@ -49,7 +49,7 @@
       xhr.send();
     },
     save(data, onLoad, onError) {
-      createAndCheckRequest(data, onLoad, onError);
+      var xhr = createAndCheckRequest(data, onLoad, onError);
       xhr.open('POST', 'https://js.dump.academy/code-and-agick');
       xhr.send(data);
     },

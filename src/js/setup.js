@@ -148,9 +148,10 @@
       if (window.lastTimeout) {
         clearTimeout(window.lastTimeout);
       }
-      window.lastTimeout = setTimeout(window.similarWizards.changeColor, 300);
+      window.lastTimeout = setTimeout(window.similarWizards.changeColor, 1000);
     });
   }
+
   function onMainFireball() {
     var Fireball = {
       wrap: document.querySelector('.setup-fireball-wrap'),
