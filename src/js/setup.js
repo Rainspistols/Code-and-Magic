@@ -170,4 +170,28 @@
   }
   onMainWizard();
   onMainFireball();
+
+  function changeUserPhoto() {
+    var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+
+    var fileChooser = document.querySelector('.upload input[type=file]');
+    var preview = document.querySelector('.setup-user-pic');
+
+    fileChooser.addEventListener('change', () => {
+      var file = fileChooser.files[0];
+      var fileName = file.name.toLowerCase();
+
+      var mathces = FILE_TYPES.some((type) => fileName.endsWith(type));
+
+      if (mathces) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          preview.src = reader.result;
+        };
+      }
+    });
+  }
+
+  changeUserPhoto();
 })();
